@@ -6,19 +6,30 @@
 
 Real-time driver monitoring system using MobileNetV3. Edge-optimized for 0.6ms latency and 1.96MB size, achieving >90% accuracy in classifying inattentive states.
 
-## 🚀 Overview
-This repository contains a high-performance, lightweight Driver Monitoring System (DMS) designed for real-time edge deployment. The system classifies six distinct driver states to enhance road safety through proactive inattention detection.
+## 🚀 Methodology & Evolution
+The development of this system followed an iterative approach, documented through multiple notebook versions. We have selected specific versions to represent the core evolutionary steps:
+1.  **Baseline Establishment (VGG16)**: Determining the upper bounds of accuracy regardless of size.
+2.  **Efficiency Balancing (EfficientNetB1)**: Transitioning towards mobile-friendly architectures.
+3.  **Edge Optimization (MobileNetV3)**: Finalizing the lightweight backbone with the best parameter-to-latency ratio.
+
+The provided notebooks showcase the full journey of shaping the final model, from raw data processing to advanced hyperparameter tuning and quantization.
+
+### 🧩 Reproducibility
+To ensure consistent results across different environments, all experiments utilize **deterministic seeding**. We explicitly set seeds for `numpy`, `python.random`, and `tensorflow` to ensure that the training process and model weights remain reproducible.
+
+### 📉 Compression & Quantization Nuances
+While three different compression formats (Dynamic Range, Float16, and Int8) were generated, this project specifically utilizes the **Float16 (.tflite)** model for deployment. 
+*   **Rationale**: Float16 provided the most stable performance. Other formats encountered compatibility issues with the **XNNPACK delegate**, and full Int8/Dynamic Range testing remains an area for future validation.
 
 ## 📊 Quick Links
 *   **Dataset:** [Driver Inattention Detection Dataset](https://www.kaggle.com/datasets/zeyad1mashhour/driver-inattention-detection-dataset)
 *   **Live Notebook:** [CV-MiniProject on Kaggle](https://www.kaggle.com/code/saadaswad/cv-miniproject)
-    > **Note:** You can view the full development history in the Kaggle notebook revisions, showing the progression from the initial baseline (VGG16) to the final optimized MobileNetV3 implementation.
 
 ## 📈 Key Performance Metrics
 | Metric | Result |
 | :--- | :--- |
-| **Model Size (FP16)** | **1.96 MB** |
-| **Inference Latency** | **0.6 ms** (on CPU) |
+| **Model Size (float16)** | **~2.00 MB** |
+| **Inference Latency** | **~0.6 ms** (on CPU) |
 | **Accuracy** | **~91%** |
 | **Classes** | Aware, Drinking, Reckless, Sleepy, Yawning, Texting |
 
@@ -28,8 +39,6 @@ This repository contains a high-performance, lightweight Driver Monitoring Syste
 - **Optimization:** TFLite (Post-Training Float16 Quantization)
 - **Input Resolution:** 96x96 pixels
 
-## 📄 Documentation
-For a deep dive into the architecture evolution and optimization strategies, see the [Technical Report](driver_monitoring_system_report.md).
 
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
