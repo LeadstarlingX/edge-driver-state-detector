@@ -39,6 +39,13 @@ While three different compression formats (Dynamic Range, Float16, and Int8) wer
 - **Optimization:** TFLite (Post-Training Float16 Quantization)
 - **Input Resolution:** 96x96 pixels
 
+## 🤝 Feedback & Contributions
+
+Please use the project's **[Kaggle Discussion](https://www.kaggle.com/code/saadaswad/cv-miniproject)** to share:
+- Technical insights on architecture or quantization
+- Edge deployment optimizations
+- Suggestions for improving code or documentation
+
 
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
